@@ -1,0 +1,842 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio Milawati - UI/UX Design</title>
+
+<style>
+:root {
+    --navy: #07182e;
+    --navy2: #0c2340;
+    --card: #112b49;
+    --blue: #2376d2;
+    --cyan: #65c5f3;
+    --cream: #f3e5c9;
+    --white: #ffffff;
+    --muted: #b8c8d9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.7;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img, video {
+    max-width: 100%;
+}
+
+/* NAVBAR */
+header {
+    background: rgba(7,24,46,.96);
+    border-bottom: 1px solid rgba(101,197,243,.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+}
+
+nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--cream);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.nav-links a {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: bold;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+.nav-links .profile-link {
+    background: var(--cream);
+    color: var(--navy);
+    padding: 9px 15px;
+    border-radius: 20px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 27px;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* GENERAL */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 25px;
+}
+
+.section {
+    padding: 85px 0;
+    scroll-margin-top: 75px;
+}
+
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-label {
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+h2 {
+    color: var(--cream);
+    font-size: 34px;
+    margin: 8px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+    max-width: 700px;
+}
+
+/* HERO / PROFIL */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(circle at 85% 25%, #164a7b 0, transparent 30%),
+        linear-gradient(135deg, var(--navy), var(--navy2));
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.3fr .7fr;
+    align-items: center;
+    gap: 60px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.15;
+    color: var(--cream);
+    margin: 15px 0;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 600px;
+    margin-bottom: 25px;
+}
+
+.hero-tag {
+    display: inline-block;
+    background: rgba(101,197,243,.12);
+    border: 1px solid rgba(101,197,243,.3);
+    padding: 8px 16px;
+    border-radius: 30px;
+    color: var(--cyan);
+    font-size: 13px;
+}
+
+.profile-photo {
+    width: 290px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 25px;
+    border: 5px solid rgba(101,197,243,.3);
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    display: block;
+    margin: auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 30px;
+    background: var(--blue);
+    color: white;
+    font-weight: bold;
+    transition: .3s;
+    margin-top: 5px;
+}
+
+.btn:hover {
+    background: var(--cyan);
+    color: var(--navy);
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    margin-left: 10px;
+}
+
+/* CARD */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid rgba(101,197,243,.15);
+    border-radius: 18px;
+    padding: 25px;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--cyan);
+}
+
+.card h3 {
+    color: var(--cream);
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.card-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+/* PROJECT OVERVIEW */
+.overview-box {
+    background: linear-gradient(135deg,#12365c,#0c2340);
+    border: 1px solid rgba(101,197,243,.25);
+    border-radius: 20px;
+    padding: 35px;
+}
+
+.overview-box h3 {
+    color: var(--cream);
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.overview-box p {
+    color: var(--muted);
+    margin-bottom: 15px;
+}
+
+.overview-points {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.overview-point {
+    padding: 18px;
+    border-radius: 14px;
+    background: rgba(101,197,243,.08);
+    border: 1px solid rgba(101,197,243,.16);
+}
+
+.overview-point strong {
+    display: block;
+    color: var(--cyan);
+    margin-bottom: 5px;
+}
+
+.overview-point span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* DESIGN PROCESS */
+.process-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.process-layout img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 1px solid rgba(101,197,243,.25);
+}
+
+.process-text {
+    color: var(--muted);
+}
+
+.process-text h3 {
+    color: var(--cream);
+    margin-bottom: 10px;
+}
+
+/* VIDEO */
+.video-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto 0;
+    padding: 12px;
+    background: var(--card);
+    border: 1px solid rgba(101,197,243,.3);
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.25);
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+    background: #000;
+}
+
+.video-caption {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* BEFORE AFTER DESKTOP */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.comparison-item {
+    background: var(--card);
+    padding: 15px;
+    border-radius: 18px;
+    border: 1px solid rgba(101,197,243,.2);
+}
+
+.comparison-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+    background: #07182e;
+    border-radius: 12px;
+}
+
+.comparison-item h3 {
+    color: var(--cream);
+    margin: 12px 0 5px;
+}
+
+.comparison-item p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* PROTOTYPE */
+.prototype-box {
+    text-align: center;
+    background: linear-gradient(135deg,#12365c,#0c2340);
+    padding: 45px 25px;
+    border-radius: 22px;
+    border: 1px solid rgba(101,197,243,.3);
+}
+
+.prototype-box p {
+    color: var(--muted);
+    margin: 10px auto 25px;
+    max-width: 600px;
+}
+
+/* KESIMPULAN */
+.conclusion {
+    background: var(--navy2);
+    padding: 35px;
+    border-left: 5px solid var(--cyan);
+    border-radius: 12px;
+    color: var(--muted);
+}
+
+.conclusion strong {
+    color: var(--cream);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    background: #04101f;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px) {
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .hero-content {
+        gap: 25px;
+    }
+}
+
+@media(max-width:768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        background: var(--navy2);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        border-bottom: 1px solid rgba(101,197,243,.2);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+        padding: 5px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .profile-photo {
+        width: 230px;
+        height: 280px;
+    }
+
+    .card-grid,
+    .process-layout,
+    .comparison-grid,
+    .overview-points {
+        grid-template-columns: 1fr;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    .section {
+        padding: 65px 0;
+    }
+
+    .overview-box {
+        padding: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+<nav>
+    <a href="#profile" class="logo">MILAWATI.</a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+        ☰
+    </button>
+
+    <div class="nav-links" id="navLinks">
+        <a href="#profile" class="profile-link">PROFIL SAYA</a>
+        <a href="#overview">OVERVIEW</a>
+        <a href="#solution">SOLUTION</a>
+        <a href="#problem">PROBLEM</a>
+        <a href="#process">DESIGN PROCESS</a>
+        <a href="#improvement">PERBAIKAN</a>
+        <a href="#comparison">BEFORE AFTER</a>
+        <a href="#prototype">PROTOTYPE</a>
+        <a href="#conclusion">KESIMPULAN</a>
+    </div>
+</nav>
+</header>
+
+<!-- PROFIL -->
+<section class="hero" id="profile">
+<div class="container hero-content">
+    <div>
+        <span class="hero-tag">PORTOFOLIO UI/UX DESIGN</span>
+
+        <h1>Halo, Saya <span>Milawati</span></h1>
+
+        <p>
+            Saya merupakan siswi Rekayasa Perangkat Lunak yang tertarik
+            pada bidang desain UI/UX. Portofolio ini berisi dokumentasi
+            proses analisis, perancangan, dan perbaikan tampilan website.
+        </p>
+
+        <a href="#overview" class="btn">Lihat Project</a>
+        <a href="#prototype" class="btn btn-outline">Lihat Prototype</a>
+    </div>
+
+    <div>
+        <!-- GANTI FOTO PROFIL DI FOLDER images -->
+        <img
+            src="images/foto-profil.jpg"
+            alt="Foto profil Milawati"
+            class="profile-photo"
+        >
+    </div>
+</div>
+</section>
+
+<main class="container">
+
+<!-- 01 PROJECT OVERVIEW -->
+<section class="section" id="overview">
+    <div class="section-heading">
+        <span class="section-label">01 / PROJECT OVERVIEW</span>
+        <h2>Project Overview</h2>
+        <p>
+            Gambaran umum mengenai proyek evaluasi dan perbaikan
+            tampilan website sekolah.
+        </p>
+    </div>
+
+    <div class="overview-box">
+        <h3>Perancangan Ulang Website Sekolah</h3>
+
+        <p>
+            Proyek ini berfokus pada evaluasi tampilan dan pengalaman
+            pengguna website sekolah. Tujuannya adalah membuat navigasi
+            lebih mudah dipahami, informasi lebih terstruktur, serta
+            tampilan website lebih menarik dan nyaman digunakan.
+        </p>
+
+        <p>
+            Melalui proyek ini, dilakukan pengamatan terhadap tampilan
+            website, identifikasi permasalahan, penyusunan rekomendasi,
+            hingga pembuatan rancangan desain sebagai solusi perbaikan.
+        </p>
+
+        <div class="overview-points">
+            <div class="overview-point">
+                <strong>01. Evaluasi</strong>
+                <span>Mengamati tampilan dan navigasi website.</span>
+            </div>
+
+            <div class="overview-point">
+                <strong>02. Perancangan</strong>
+                <span>Menyusun solusi dan desain perbaikan.</span>
+            </div>
+
+            <div class="overview-point">
+                <strong>03. Hasil</strong>
+                <span>Menghasilkan rancangan tampilan yang lebih baik.</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 02 SOLUTION DETAIL -->
+<section class="section" id="solution">
+    <div class="section-heading">
+        <span class="section-label">02 / SOLUTION DETAIL</span>
+        <h2>Solution Detail</h2>
+        <p>
+            Informasi mengenai peran, waktu pengerjaan, dan alat
+            yang digunakan.
+        </p>
+    </div>
+
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon"></div>
+            <h3>My Role</h3>
+            <p>
+                UI/UX Designer, melakukan analisis permasalahan,
+                menyusun rekomendasi, dan membuat desain perbaikan.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon"></div>
+            <h3>Timeline</h3>
+            <p>
+                September 2026. Meliputi proses evaluasi,
+                identifikasi masalah, perancangan, dan perbaikan.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon"></div>
+            <h3>Tools</h3>
+            <p>
+                Figma untuk membuat desain dan prototype,
+                serta browser untuk melakukan pengujian website.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 03 PROBLEM -->
+<section class="section" id="problem">
+    <div class="section-heading">
+        <span class="section-label">03 / PROBLEM</span>
+        <h2>Permasalahan</h2>
+        <p>
+            Beberapa permasalahan yang ditemukan saat mengevaluasi website.
+        </p>
+    </div>
+
+    <div class="card-grid">
+        <div class="card">
+            <div class="card-icon"></div>
+            <h3>Struktur Navigasi</h3>
+            <p>
+                Pengelompokan menu dan submenu masih perlu diperjelas
+                agar pengguna lebih mudah menemukan informasi.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon"></div>
+            <h3>Pengelompokan Informasi</h3>
+            <p>
+                Informasi pada beberapa bagian website perlu disusun
+                lebih teratur agar lebih mudah dibaca dan dipahami.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 04 DESIGN PROCESS -->
+<section class="section" id="process">
+    <div class="section-heading">
+        <span class="section-label">04 / DESIGN PROCESS</span>
+        <h2>Design Process</h2>
+        <p>
+            Tahapan yang dilakukan untuk memahami permasalahan
+            dan menentukan solusi desain.
+        </p>
+    </div>
+
+    <div class="process-layout">
+        <div>
+            <!-- FOTO STICKY NOTES -->
+            <img
+                src="images/sticky-notes.jpg"
+                alt="Dokumentasi sticky notes design process"
+            >
+        </div>
+
+        <div class="process-text">
+            <h3>Identifikasi dan Analisis Masalah</h3>
+            <p>
+                Proses diawali dengan mengamati website dan mencatat
+                bagian yang perlu diperbaiki. Hasil pengamatan kemudian
+                dikelompokkan menggunakan sticky notes untuk membantu
+                menentukan prioritas perbaikan.
+            </p>
+
+            <br>
+
+            <h3>Menentukan Solusi</h3>
+            <p>
+                Setelah masalah ditemukan, dilakukan penyusunan
+                rekomendasi dan rancangan tampilan yang lebih mudah
+                dipahami oleh pengguna.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 05 PROSES PERBAIKAN -->
+<section class="section" id="improvement">
+    <div class="section-heading">
+        <span class="section-label">05 / PROSES PERBAIKAN</span>
+        <h2>Proses Perbaikan Website</h2>
+        <p>
+            Dokumentasi proses perbaikan website yang menampilkan
+            perubahan dan penerapan rekomendasi desain.
+        </p>
+    </div>
+
+    <div class="video-container">
+        <video controls preload="metadata" playsinline>
+            <source src="./videos/proses-perbaikan.mp4" type="video/mp4">
+            Browser Anda tidak mendukung pemutaran video.
+        </video>
+
+        <p class="video-caption">
+            Video dokumentasi proses perbaikan website
+        </p>
+    </div>
+</section>
+
+<!-- 06 BEFORE AFTER DESKTOP -->
+<section class="section" id="comparison">
+    <div class="section-heading">
+        <span class="section-label">06 / BEFORE & AFTER</span>
+        <h2>Perbandingan Tampilan Website</h2>
+        <p>
+            Perbandingan tampilan website sebelum dan sesudah
+            dilakukan perbaikan pada versi desktop.
+        </p>
+    </div>
+
+    <div class="comparison-grid">
+        <div class="comparison-item">
+            <!-- FOTO BEFORE DESKTOP -->
+            <img
+                src="images/before-desktop.jpg"
+                alt="Tampilan website sebelum perbaikan desktop"
+            >
+            <h3>Before - Desktop</h3>
+            <p>Tampilan website sebelum dilakukan perbaikan.</p>
+        </div>
+
+        <div class="comparison-item">
+            <!-- FOTO AFTER DESKTOP -->
+            <img
+                src="images/after-desktop.jpg"
+                alt="Tampilan website sesudah perbaikan desktop"
+            >
+            <h3>After - Desktop</h3>
+            <p>Tampilan website setelah dilakukan perbaikan.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 07 PROTOTYPE -->
+<section class="section" id="prototype">
+    <div class="prototype-box">
+        <span class="section-label">07 / LINK PROTOTYPE</span>
+        <h2>Lihat Hasil Prototype</h2>
+
+        <p>
+            Klik tombol di bawah untuk melihat rancangan desain
+            website yang telah dibuat menggunakan Figma.
+        </p>
+
+        <!-- GANTI LINK DENGAN LINK PROTOTYPE FIGMA MILIKMU -->
+        <a
+            href="https://www.figma.com/proto/r4LNvBDBAAnIOc41CaAcie/Untitled?node-id=85-1398&t=rwiAXfSZhPr7Hyzg-1&scaling=min-zoom&content-scaling=fixed&page-id=85%3A906&starting-point-node-id=85%3A1398"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn"
+        >
+            Buka Prototype Figma ↗
+        </a>
+    </div>
+</section>
+
+<!-- 08 KESIMPULAN -->
+<section class="section" id="conclusion">
+    <div class="section-heading">
+        <span class="section-label">08 / KESIMPULAN</span>
+        <h2>Kesimpulan</h2>
+    </div>
+
+    <div class="conclusion">
+        <p>
+            Berdasarkan proses evaluasi dan perancangan yang telah
+            dilakukan, dapat disimpulkan bahwa perbaikan tampilan
+            website diperlukan untuk meningkatkan kemudahan pengguna
+            dalam mengakses informasi.
+        </p>
+
+        <br>
+
+        <p>
+            <strong>
+                Melalui perbaikan struktur navigasi,informasi, 
+                dan tampilan desain, diharapkan website
+                menjadi lebih teratur, menarik, dan mudah digunakan.
+            </strong>
+        </p>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Milawati | Portofolio UI/UX Design</p>
+    <p>Rekayasa Perangkat Lunak</p>
+</footer>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+menuToggle.addEventListener("click", function() {
+    navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(function(link) {
+    link.addEventListener("click", function() {
+        navLinks.classList.remove("active");
+    });
+});
+</script>
+
+</body>
+</html>
